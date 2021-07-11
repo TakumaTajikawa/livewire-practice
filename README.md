@@ -18,6 +18,10 @@ docker-compose exec db bash -c 'mysql -u${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQ
 ## 環境構築手順
 
 ```
+
+git clone https://github.com/TakumaTajikawa/laravel-default.git
+cd laravel-default
+
 docker compose up -d --build
 
 Laravelインストール
