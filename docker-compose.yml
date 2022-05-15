@@ -1,11 +1,13 @@
-version: "3.8"
+version: "3.9"
 services: 
   app:
+    container_name: app
     build: ./infra/php
     volumes:
       - ./backend:/work
   
   web:
+    container_name: nginx
     image: nginx:1.18-alpine
     ports:
       - 10080:80
@@ -15,9 +17,17 @@ services:
     working_dir: /work
 
   db:
+    container_name: mysql
     build: ./infra/mysql
     volumes:
       - db-store:/var/lib/mysql
+
+  mailhog:
+    container_name: mailhog
+    image: mailhog/mailhog
+    ports:
+        - "1025:1025"
+        - "8025:8025"
 
 volumes:
   db-store:
